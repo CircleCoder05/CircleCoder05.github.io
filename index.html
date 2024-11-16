@@ -69,6 +69,19 @@ layout: default
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
+    <div id="gitalk-container-{{ post.id }}"></div>
+    <script>
+      var gitalk = new Gitalk({
+        clientID: '你的GitHub应用程序的Client ID',
+        clientSecret: '你的GitHub应用程序的Client Secret',
+        repo: 'comments',
+        owner: '你的GitHub用户名',
+        admin: ['你的GitHub用户名'],
+        id: '{{ post.id }}',
+        distractionFreeMode: false
+      });
+      gitalk.render('gitalk-container-{{ post.id }}');
+    </script>
   {% endunless %}
   {% endfor %}
 </div>
@@ -103,3 +116,7 @@ layout: default
 		User:<span id="busuanzi_value_site_uv" style="font-family:Consolas;color:Silver;font-size:12px;"></span>
 	</span>
 </div>
+
+<!-- 引入Gitalk的CSS和JS -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
